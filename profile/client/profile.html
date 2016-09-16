@@ -1,0 +1,164 @@
+<template name="profile">
+    <div class="profile">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="stats left">
+                    <p>Profile of <b>{{profile.name}}</b></p>
+
+                    {{#if profile.aboutMe}}
+                        <p>{{profile.aboutMe}}</p>
+                    {{/if}}
+
+                    {{#if profile.place}}
+                        <p>Lives in {{profile.place}}</p>
+                    {{/if}}
+
+                    {{#if profile.website}}
+                        <p>Website: <a href="{{profile.website}}" target="_blank">{{profile.websiteText}}</a></p>
+                    {{/if}}
+
+                    {{#if isOwn}}
+                        <a href="/preferences">Edit profile</a>
+                    {{/if}}
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="stats right">
+                    <p><b>{{profile.numberOfPoints}}</b> points collected</p>
+                    <p><b>{{profile.numberOfComments}}</b> opinions stated</p>
+                    <p><b>{{profile.numberOfUpvotes}}</b> people agreed with {{profile.name}}</p>
+                </div>
+            </div>
+        </div>
+
+        <hr class="stats-timeline-line">
+
+        <p class="timeline-heading">User's activity</p>
+
+        <div class="timeline-select">
+            <div class="btn-group btn-group-sm">
+                {{#each filters}}
+                    <button type="button" class="btn {{#if current}}btn-primary{{else}}btn-default{{/if}} filter">{{text}}</button>
+                {{/each}}
+            </div>
+        </div>
+        {{> timeline}}
+    </div>
+</template>
+
+<template name="timeline">
+    <div class="timeline">
+        {{#if items}}
+            {{#each items}}
+                <div class="item">
+                    {{#if isComment}}
+                        {{> timelineComment}}
+                    {{else}}
+                        {{#if isAgreeingComment}}
+                            {{> timelineAgreeingComment}}
+                        {{else}}
+                            {{#if isReply}}
+                                {{> timelineReply}}
+                            {{else}}
+                                {{> timelineDebate}}
+                            {{/if}}
+                        {{/if}}
+                    {{/if}}
+                </div>
+            {{/each}}
+        {{else}}
+            <p class="no-items">There is nothing here</p>
+        {{/if}}
+    </div>
+</template>
+
+<template name="timelineComment">
+    <div class="heading">
+        <div class="title">
+            Wrote opinion on debate <u><a href="/topic/{{debateID}}#opinion:{{_id}}">{{debateTitle}}</a></u>
+        </div>
+        <div class="date">
+            {{date datetime 'MM-DD-YYYY'}}
+        </div>
+    </div>
+
+    <div class="content">
+        {{content}}
+    </div>
+
+    <div class="info" data-toggle="tooltip" data-placement="top" title="Number of people who agree">
+        <b>{{ numberOfUpvotes }}</b>
+        <span class="glyphicon glyphicon-upload"></span>
+    </div>
+
+    <div class="info" data-toggle="tooltip" data-placement="top" title="Number of replies">
+        <b>{{ numberOfReplies }}</b>
+        <span class="glyphicon glyphicon-comment"></span>
+    </div>
+</template>
+
+<template name="timelineAgreeingComment">
+    <div class="heading">
+        <div class="title">
+            Agrees with opinion on debate <u><a href="/topic/{{debateID}}#opinion:{{_id}}">{{debateTitle}}</a></u>
+        </div>
+        <div class="date">
+            {{date datetime 'MM-DD-YYYY'}}
+        </div>
+    </div>
+
+    <div class="content">
+        {{content}}
+    </div>
+
+    <div class="info" data-toggle="tooltip" data-placement="top" title="Number of people who agree">
+        <b>{{ numberOfUpvotes }}</b>
+        <span class="glyphicon glyphicon-upload"></span>
+    </div>
+
+    <div class="info" data-toggle="tooltip" data-placement="top" title="Number of replies">
+        <b>{{ numberOfReplies }}</b>
+        <span class="glyphicon glyphicon-comment"></span>
+    </div>
+</template>
+
+<template name="timelineReply">
+    <div class="heading">
+        <div class="title">
+            Replied to opinion on debate <u><a href="/topic/{{debateID}}#reply:{{_id}}">{{debateTitle}}</a></u>
+        </div>
+        <div class="date">
+            {{date datetime 'MM-DD-YYYY'}}
+        </div>
+    </div>
+
+    <div class="content">
+        {{content}}
+    </div>
+
+    <div class="info" data-toggle="tooltip" data-placement="top" title="Number of people who agree with opinion">
+        <b>{{ numberOfCommentUpvotes }}</b>
+        <span class="glyphicon glyphicon-upload"></span>
+    </div>
+</template>
+
+<template name="timelineDebate">
+    <div class="heading">
+        <div class="title">
+            Created debate <u><a href="/topic/{{id}}">{{title}}</a></u>
+        </div>
+        <div class="date">
+            {{date datetime 'MM-DD-YYYY'}}
+        </div>
+    </div>
+
+    <div class="content">
+        {{description}}
+    </div>
+
+    <div class="info" data-toggle="tooltip" data-placement="top" title="Number of opinions">
+        <b>{{ numberOfComments }}</b>
+        <span class="glyphicon glyphicon-pencil"></span>
+    </div>
+</template>

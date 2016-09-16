@@ -1,0 +1,41 @@
+<template name="base">
+    <div class="whiteTopBorder"></div>
+    <div class="container">
+            <div class="layout-controls">
+                {{#if currentUser}}
+                    <a href="" class="navbar-action logout" title="Logout">
+                        <span class="glyphicon glyphicon-off"></span>
+                    </a>
+
+                    <a href="/profile" class="navbar-action view-profile">
+                        <span class="glyphicon glyphicon-user"></span>
+                        {{userName}}
+                    </a>
+
+                    <div class="navbar-action notifications-overview" data-toggle="popover" data-placement="bottom" title="Notifications" data-content="{{notificationsContent}}">
+                        <a href="" class="view-notifications">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            {{#if unseenNotificationsCount}}
+                                 (<b style="color: red">{{unseenNotificationsCount}}</b>)
+                            {{else}}
+                                ({{unseenNotificationsCount}})
+                            {{/if}}
+                        </a>
+                    </div>
+                {{else}}
+                    <a href="/login" class="navbar-action sign-up">
+                        <span class="glyphicon glyphicon-user"></span>
+                        Log in
+                    </a>
+                {{/if}}
+
+                <a href="/">
+                    <div class="logo"></div>
+                </a>
+            </div>
+
+        <div class="row" style="margin-bottom: 200px;">
+            {{> yield}}
+        </div>
+    </div>
+</template>

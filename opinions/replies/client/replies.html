@@ -1,0 +1,60 @@
+<template name="replies">
+    <div class="replies">
+        {{#each replies}}
+            {{> reply}}
+        {{/each}}
+        {{#if currentUser}}
+            {{> postReply}}
+        {{/if}}
+    </div>
+</template>
+
+<template name="reply">
+    <div class="reply {{#if isSelected}}selected{{/if}}" >
+        <div class="heading">
+            <div class="user-name {{#if isSelected}}selected{{/if}}" data-toggle="popover" data-placement="bottom" title="{{userName}}'s activity" data-content="{{toolboxContent}}">{{userName}}</div>
+            <div class="actions">
+                {{#if currentUser}}
+                    {{#if isOwn}}
+                        <div class="upvote-reply action" data-toggle="tooltip" data-placement="top" title="Number of upvotes">
+                            <b>{{ numUpvotes }}</b>
+                            <span class="glyphicon glyphicon-upload"></span>
+                        </div>
+                        <div class="remove-reply action" data-toggle="tooltip" data-placement="top" title="Remove reply">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </div>
+                    {{else}}
+                        <div class="upvote-reply action" data-toggle="tooltip" data-placement="top" title="{{#if didUpvote }}I don't agree{{else}}I agree{{/if}}">
+                            <b>{{ numUpvotes }}</b>
+                            <button class="glyphicon glyphicon-upload {{#if didUpvote}}active{{/if}}"></button>
+                        </div>
+                    {{/if}}
+                {{else}}
+                    <div class="upvote-reply action" data-toggle="tooltip" data-placement="top" title="Number of upvotes">
+                        <b>{{ numUpvotes }}</b>
+                        <span class="glyphicon glyphicon-upload"></span>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+        <div class="content">
+            {{#if isShortened}}
+                {{#if viewFull}}
+                    {{content}}
+                {{else}}
+                    {{shortContent}}
+                    <a class="see-more">See more</a>
+                {{/if}}
+            {{else}}
+                {{content}}
+            {{/if}}
+        </div>
+    </div>
+</template>
+
+<template name="postReply">
+    <div class="new-reply">
+        <textarea class="form-control" placeholder="Leave reply" rows="1"></textarea>
+        <button class="btn btn-default" type="button">Post</button>
+    </div>
+</template>

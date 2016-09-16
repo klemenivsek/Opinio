@@ -1,0 +1,93 @@
+body {
+    background: url("/images/bg.png");
+    background-size: 50%;
+    background-repeat: repeat;
+    //background-attachment: fixed;
+}
+
+a:hover, a:focus, a:active {
+    color: #F5B428;
+    text-decoration: none;
+}
+
+.whiteTopBorder{
+    position: fixed;
+    top: 0px;
+    background-color: white;
+    z-index: 9;
+    width: 100%;
+    //border-bottom: 1px solid #ECECEC;
+    box-shadow: 0px 0px 10px 2px #DFECFB;
+    height: 45px;
+    padding: 6px 15px;
+    margin-bottom: 20px;
+}
+
+.container {
+    //margin-top: 50px;
+    max-width: 900px;
+    width: 100%;
+    color: #333;
+    background-color: white;
+    padding: 10px 40px;
+    //border-radius: 6px;
+    //box-shadow: 0px 0px 5px 5px #DFECFB;
+    //box-shadow: 0px 0px 50px 9px #DFECFB;
+    //border: 1px solid #DFECFB;
+
+    .row{
+        margin-bottom: 0px !important;
+        padding-top: 50px;
+    }
+}
+
+.layout-controls {
+    //fixed header position
+    position: fixed;
+    top: 0px;
+    background-color: white;
+    z-index: 10;
+    margin-left: -40px;
+    max-width: 900px;
+    width: inherit;
+
+    //border-bottom: 1px solid #ECECEC;
+    //box-shadow: 0 2px 8px -2px #ECECEC;
+    height: 45px;
+    padding: 6px 15px;
+    margin-bottom: 20px;
+    font-family: 'open sans', sans-serif;
+
+    .popover-title{
+        padding: 5px 7px;
+    }
+    .popover-content {
+        padding: 10px 7px;
+        height: 500px;
+        overflow: auto;
+    }
+    .navbar-action {
+        margin-left: 25px;
+        margin-top: 10px;
+        float: right;
+    }
+
+    .logo {
+        background-image: url("/images/opinio11.png");
+        background-image: url("/images/opinio10.png");
+        width: 100px;
+        height: 100%;
+        background-size: contain;
+        //float: left;
+
+        background-repeat: no-repeat;
+        margin-left: 4px;
+
+        transition: all 0.3s;
+    }
+
+    .logo:hover {
+        background-image: url("/images/opinio11.png");
+        opacity: 1
+    }
+}

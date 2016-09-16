@@ -1,0 +1,45 @@
+<template name="debate">
+    <div class="debate">
+        <div class="row">
+            {{#each sides}}
+                <div class="col-xs-{{columnWidth}}">
+                    {{> side side=this}}
+                </div>
+            {{/each}}
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="summary-container">
+                    {{> summary}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="side">
+    <div class="side" side="{{side.key}}">
+        <p class="title">{{title}}</p>
+
+        <div class="colorIndicator {{side.key}}"></div>
+
+        {{#if currentUser}}
+            <div class="own-comment-container">
+                {{> yourComment side=side }}
+            </div>
+        {{/if}}
+
+        {{#if hasComments}}
+            {{#if comments}}
+                <div class="comments">
+                    {{#each comments}}
+                        {{> comment}}
+                    {{/each}}
+                </div>
+            {{/if}}
+        {{else}}
+            <div class="no-comments">There are no opinions yet</div>
+        {{/if}}
+
+    </div>
+</template>

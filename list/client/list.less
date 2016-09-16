@@ -1,0 +1,104 @@
+.list {
+    text-align: center;
+    max-width: 600px;
+    margin: 0px auto;
+
+    > .heading {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        letter-spacing: 1px;
+        padding: 20px;
+        color: #585858;
+        font-weight: 400;
+        a{
+            color: #366BAB;
+        }
+    }
+
+    .list-group {
+        font-family: 'Open Sans', sans-serif;
+        text-align: left;
+        border-bottom: 1px solid #e1e1e1;
+        .list-group-item {
+            border: 0px solid #fff;
+            border-top: 1px solid #e1e1e1;
+            padding: 13px 0px;
+            &:first-child{ 
+                border-top-left-radius: 0px;
+                border-top-right-radius: 0px;
+            }
+        }
+    }
+
+    .create-debate-button {
+        text-align: center;
+        margin-bottom: 10px;
+        background-color: white;
+        border-color: white;
+        color: #337AB7;
+        &:hover {
+            background-color: white;
+            border-color: white;
+            color: #F5B428;
+        }
+    }
+
+    .article-item {
+        position: relative;
+        height: 80px;
+
+        .image {
+            float: left;
+            width: 150px;
+            height: 75px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 10px;
+        }
+
+        .title {
+            font-weight: 600;
+            font-size:  16px; 
+        }
+
+        .details {
+            position: absolute;
+            bottom: 0px;
+            left: 160px;
+            color: #646464;
+            font-size: 12px;
+            font-weight: 600;
+            .agree{
+                color: #A8CF56;
+                float: left;
+            }
+            .disagree{
+                color: rgba(242, 103, 37, 0.7);
+                float: left;
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+.create-debate {
+    margin-top: 10px;
+    text-align: left;
+
+    label {
+        margin-left: 5px;
+    }
+
+    .side {
+        .title {
+            margin-left: 5px;
+            font-weight: bold;
+        }
+    }
+
+    .error {
+        color: #c00;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+}

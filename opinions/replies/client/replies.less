@@ -1,0 +1,55 @@
+.replies {
+    margin-left: 10px;
+    margin-top: 10px;
+
+    p {
+        font-weight: bold;
+        margin: 0px;
+        margin-top: 10px;
+    }
+
+    .reply {
+        background-color: ##F9F9F9;
+        border-top: 1px solid #e1e1e1;
+        padding: 5px;
+        margin: 5px 0px;
+        cursor: pointer;
+        word-wrap: break-word;
+
+        .content {
+            .see-more {
+                cursor: pointer;
+                display: block;
+            }
+        }
+    }
+
+    .popover-content {
+        padding: 6px 8px;
+
+        .view-profile {
+            margin-left: 3px;
+        }
+    }
+
+    .reply.selected {
+        background-color: #FFEF94;
+    }
+
+    .user-opinion {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 2px;
+        word-wrap: break-word;
+    }
+
+    .new-reply {
+        text-align: right;
+
+        textarea {
+            outline: none !important;
+            resize: vertical;
+            margin-bottom: 5px;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+<template name="topic">
+    <div class="article">
+        {{#if imageUrl}}
+            <div class="image" style="background-image: url({{imageUrl}});"></div>
+        {{/if}}
+        <h2 class="title">{{title}}</h2>
+        <p class="content">{{description}}</p>
+        <div class="details">
+            <p class="author">Created by <a href="/profile/{{authorID}}">{{authorName}}</a></p>
+            {{#if canRemove}}
+                <div class="action remove" data-toggle="tooltip" data-placement="top" title="Remove this debate">
+                    <span class="glyphicon glyphicon-remove"></span> Remove
+                </div>
+            {{/if}}
+            <div class="action invite" data-toggle="tooltip" data-placement="top" title="Invite to debate">
+                <span class="glyphicon glyphicon-share-alt"></span> Share
+            </div>
+            {{#if inviteVisible}}
+                <div class="invite-link" data-toggle="tooltip" data-placement="top" title="Send this link to a friend">
+                    {{inviteUrl}}
+                </div>
+            {{/if}}
+        </div>
+        <hr style="clear:both;">
+        <h4 class="debate-title">See what people have to say...</h4>
+        {{> debate }}
+    </div>
+</template>

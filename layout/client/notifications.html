@@ -1,0 +1,17 @@
+<template name="notifications">
+    <div class="notifications">
+        {{#if notifications}}
+            {{#each notifications}}
+                {{> notification}}
+            {{/each}}
+        {{else}}
+            You don't have any notifications
+        {{/if}}
+    </div>
+</template>
+
+<template name="notification">
+    <div class="notification {{#unless seen}}unseen{{/unless}}">
+        {{{text}}}
+    </div>
+</template>

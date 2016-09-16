@@ -1,0 +1,93 @@
+.profile {
+    border-bottom: 1px solid #CCC;
+    .picture {
+        img {
+            border-radius: 50%;
+            width: 180px;
+        }
+    }
+
+    .stats {
+        font-size: 15px;
+    }
+
+    .stats.left {
+        text-align: right;
+    }
+
+    .stats.right {
+        text-align: left;
+    }
+
+    .stats-timeline-line {
+        width: 80%;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    .timeline-heading {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .timeline {
+        text-align: center;
+        margin-top: 15px;
+
+        .no-items {
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        .item {
+            border-top: 1px solid #CCC;
+            padding: 8px 12px;
+            display: inline-block;
+            margin-bottom: 10px;
+            width: 100%;
+
+            .heading {
+                height: 25px;
+
+                .title {
+                    font-weight: bold;
+                    float: left;
+                }
+
+                .date {
+                    color: #666;
+                    float: right;
+                }
+            }
+
+            .content {
+                text-align: justify;
+                word-wrap: break-word;
+            }
+
+            .info {
+                cursor: default;
+                float: left;
+                display: inline-block;
+                margin-right: 15px;
+                margin-top: 5px;
+
+                .glyphicon {
+                    margin-left: 1px;
+                    top: 2px;
+                }
+            }
+        }
+    }
+
+    .timeline-select {
+        text-align: center;
+
+        .filter {
+            outline: none;
+        }
+        .filter:focus {
+            outline: none;
+        }
+    }
+}

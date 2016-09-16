@@ -1,0 +1,25 @@
+<template name="summary">
+    {{#if upvotedComments}}
+        <div class="summary">
+            <h4 class="title">You agree with</h4>
+            <table class="table table-bordered notes">
+                <tbody>
+                    {{#each upvotedComments}}
+                        {{> upvotedComment}}
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    {{/if}}
+</template>
+
+<template name="upvotedComment">
+    <tr>
+        <td class="user-name">
+            <a href="/profile/{{userID}}">{{userName}}</a>
+        </td>
+        <td class="note-content">
+            <input class="form-control" placeholder="Write a note..." value="{{noteContent}}"/>
+        </td>
+    </tr>
+</template>

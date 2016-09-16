@@ -1,0 +1,68 @@
+<template name="login">
+    <div class="container">
+        <p class="headline">Opinio enables you to have a debate on any topic you like.</p>
+        {{#if isViewSignIn}}
+            {{> signIn}}
+        {{else}}
+            {{#if isViewSignUp}}
+                {{> signUp}}
+            {{else}}
+                {{#if isViewWaitingConfirmation}}
+                    {{> waitingConfirmation}}
+                {{/if}}
+            {{/if}}
+        {{/if}}
+    </div>
+</template>
+
+<template name="signIn">
+    <div class="sign-in">
+        <form class="sign-in-form form">
+            <p class="error">{{loginError}}</p>
+
+            <input type="email" id="email" class="form-control" placeholder="Email" required autofocus>
+
+            <input type="password" id="password" class="form-control" placeholder="Password" required>
+
+            <button class="btn btn-default btn-primary btn-block sign-in" type="submit">Login</button>
+        </form>
+
+        <div class="services">
+            <p class="heading">or login directly with</p>
+            <button class="btn btn-default facebook">Facebook</button>
+            <button class="btn btn-default google" disabled>Google</button>
+            <button class="btn btn-default twitter" disabled>Twitter</button>
+        </div>
+
+        <a class="sign-up">
+            Create an account
+        </a>
+    </div>
+</template>
+
+<template name="signUp">
+    <div class="sign-up">
+        <div class="form">
+            <p class="error">{{createError}}</p>
+
+            <input type="email" id="email" class="form-control" placeholder="Email" required autofocus>
+
+            <input type="text" id="name" class="form-control" placeholder="Full name" required>
+
+            <input type="password" id="password" class="form-control" placeholder="Password" required>
+
+            <button class="btn btn-default btn-primary btn-block sign-up">Create account</button>
+        </div>
+
+        <a class="sign-in">
+            Already have an account?
+        </a>
+    </div>
+</template>
+
+<template name="waitingConfirmation">
+    <div class="waiting-confirmation">
+        <p>An email has been sent to {{email}}.<br>Please check your inbox.</p>
+        <a class="sign-in">Back</a>
+    </div>
+</template>

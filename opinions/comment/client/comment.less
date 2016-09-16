@@ -1,0 +1,61 @@
+.comment {
+    padding: 10px;
+    margin: 3px 0px;
+    background-color: #fff;
+    border-bottom: 1px solid #e1e1e1;
+    &:first-child { border-top: 1px solid #e1e1e1; }
+
+    .heading {
+        margin-bottom: 5px;
+
+        .user-name {
+            font-weight: bold;
+            text-decoration: underline;
+            cursor: pointer;
+            display: inline;
+            color: #858585;
+        }
+
+        .actions {
+            display: inline;
+            .action {
+                float: right;
+                margin-left: 15px;
+
+                .glyphicon {
+                    position: relative;
+                    top: 2px;
+                    background: transparent;
+                    border: none !important;
+                    outline: none;
+                    padding: 0px;
+                }
+
+                .glyphicon.active {
+                    color: green;
+                }
+            }
+        }
+    }
+
+    .content {
+        word-wrap: break-word;
+        font-family: Source Sans Pro;
+        color: #646464;
+
+        .see-more {
+            cursor: pointer;
+            display: block;
+        }
+    }
+}
+
+.comment.own {
+    background-color: #fdfdfd;
+    border: 1px solid #999;
+}
+
+.comment.selected {
+    background-color: #FFEF94;
+    border: 1px solid #999;
+}

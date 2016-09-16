@@ -1,0 +1,67 @@
+<template name="comment">
+    <div class="comment {{#if isOwn}}own{{/if}} {{#if isSelected}}selected{{/if}}">
+        <div class="heading">
+            <div class="user-name" data-toggle="{{#unless isOwn}}{{#if toolboxContent}}popover{{/if}}{{/unless}}" data-placement="bottom" title="{{userName}}'s activity" data-content="{{toolboxContent}}">
+                {{userName}}
+            </div>
+            <div class="actions">
+                {{#if currentUser}}
+                    {{#if isOwn}}
+                        <div class="upvote action" data-toggle="tooltip" data-placement="top" title="Number of upvotes">
+                            <b>{{ numUpvotes }}</b>
+                            <span class="glyphicon glyphicon-upload"></span>
+                        </div>
+                    {{else}}
+                        <div class="upvote action" data-toggle="tooltip" data-placement="top" title="{{#if didUpvote }}I don't agree{{else}}I agree{{/if}}">
+                            {{#if numUpvotes}}
+                                <b>{{ numUpvotes }}</b>
+                            {{/if}}
+                            <button class="glyphicon glyphicon-upload {{#if didUpvote}}active{{/if}}"></button>
+                        </div>
+                    {{/if}}
+                {{else}}
+                    <div class="upvote action" data-toggle="tooltip" data-placement="top" title="Number of upvotes">
+                        <b>{{ numUpvotes }}</b>
+                        <span class="glyphicon glyphicon-upload"></span>
+                    </div>
+                {{/if}}
+
+                {{#if hasRepliesOrCanPost}}
+                    <div class="view-replies action" data-toggle="tooltip" data-placement="top" title="View replies">
+                        {{#if numReplies}}
+                            <b>{{ numReplies }}</b>
+                        {{/if}}
+                        <button class="glyphicon glyphicon-comment {{#if viewReplies}}active{{/if}}"></button>
+                    </div>
+                {{/if}}
+
+                {{#if isOwn}}
+                    <div class="delete action" data-toggle="tooltip" data-placement="top" title="Remove your opinion">
+                        <button class="glyphicon glyphicon-remove-circle"></button>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+
+        <div class="content comment-content">
+            {{#if isShortened}}
+                {{#if viewFull}}
+                    {{content}}
+                    <a class="see-more">Show less</a>
+                {{else}}
+                    {{shortContent}}
+                    <a class="see-more">Show more</a>
+                {{/if}}
+            {{else}}
+                {{content}}
+                {{#if hasRepliesOrCanPost}}
+                    <a class="see-more">Show replies</a>
+                {{/if}}
+            {{/if}}
+        </div>
+
+        {{#if viewReplies}}
+            {{> replies}}
+        {{/if}}
+    </div>
+</template>
